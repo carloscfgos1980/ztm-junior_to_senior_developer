@@ -14,3 +14,5 @@
 - Network Optimizations. Exercise
 - Critical Render Path
 - Keiko Corp Website. Exercise
+
+# Chapter 04.OPTIONAL: React + Redux + Module Bundling
