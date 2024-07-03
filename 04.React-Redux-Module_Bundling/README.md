@@ -139,3 +139,117 @@ It is very important to read the documentation! They have a UI section, they hav
 https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613153
 
 In this section explain the looping with high level function (map) and the importance of "key". key helps the DOM to identify if a element change without render the page again
+
+# Lesson 15. CWD: Building A React App 3
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613166
+
+<State> is an object that describe your application
+
+- In this section a search form is used
+- The search function is declared in the parent element (App.js) and pass it to the children (SearchBox.js)
+- The component in charge to render the elements (CardList) recive the changed object by the search field
+- With Redux this is simplier!
+
+# Lesson 16. CWD: Styling Your React App
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613161
+
+Gradient background:
+https://cssgradient.io
+
+Fonts:
+https://www.cufonfonts.com/font/sega-logo-font
+
+- I didn't use the example of the tutorial. Instead I use this website to create cool fonts:
+  https://freefrontend.com/css-text-effects/#google_vignette
+
+# Lesson 17. CWD: Building A React App 4
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613157
+
+- Explanation about the life cycle hood in React.
+
+- Using componentDidMount function to fetch
+  this.state = {
+  robots: [],
+  searchfield: ""
+  }
+
+  componentDidMount(){
+  fetch('https://jsonplaceholder.typicode.com/users')
+  .then(resp => resp.json())
+  .then(users => this.setState({robots: users}));
+  }
+
+  - Use an if statement to show in the sreen while loading the data
+
+* This is a old fasion to do this!
+
+# Lesson 18. CWD: Building A React App 5
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613165
+
+- This section is to explain to create a reuseable component (Scroll). How we can wrap CardList in this component so it make the website more appealing with the scroll
+
+# Lesson 19. CWD: Building A React App 6
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613150
+
+- Separation of concerns. Create a folder for the components and another one for containers (App.js)
+
+// using ternary operators instead of if else
+return !robots.length?
+
+<h1>loading....</h1>
+:
+(
+<div className="tc">
+<RobotsTitle/>
+<SearchBox searchChange={this.onSearchChange}/>
+<Scroll>
+<CardList robots={filteredrobot}/>
+</Scroll>
+</div>
+);
+
+# Lesson 20. CWD: Keeping Your Projects Up To Date
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613155
+
+- To update:
+  npm autofix
+
+- To check what are the vulnerabilities:
+  npm audit
+
+- Update
+  npm update
+
+* I could just check what is the latest version and put it in package.json
+
+# Lesson 21. Solution: Try Upgrading to React 18
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/25051758
+
+# Lesson 22. CWD: React Review
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613141
+
+# Lesson 23. CWD: Error Boundary In React
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613135
+
+- This feature really shine in production.
+- We create a component (ErrorBoundary.js). it is a classe extended to handle errors.
+- We importe it in App.js and wrap the component that could throw errors, in this case CardList
+
+# Lesson 24. CWD: Deploying Our React App
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/49022267
+
+- This is another way to upload to GitHub. I won't use it!
+
+# Lesson 25. CWD: React Hooks
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883381
