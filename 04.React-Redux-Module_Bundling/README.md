@@ -253,3 +253,82 @@ https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-devel
 # Lesson 25. CWD: React Hooks
 
 https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883381
+
+- Theoric explanation of hooks. This new feature is implemted coz "classes", "life cyclehoods" (componentDidMount, for example) and "this" were difficult to grasp. So with hooks it's a lot simplier
+
+# Lesson 26. CWD: React Hooks 2
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883379
+
+# Lesson 27. CWD: React Hooks 3
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883383
+
+- This lesson is to download robofriends app using classes and in order to start making changes into hooks
+
+# Lesson 28. CWD: React Hooks 4
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883378
+
+- Hooks don't work inside classes. They allow us to use functional components
+
+# Lesson 29. CWD: React Hooks 5
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883385
+
+# Lesson 30. CWD: React Hooks 6. useState
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883380
+
+- Convert class into function
+- implement useState
+
+# Lesson 31. CWD: React Hooks 7. useEffect
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883384
+
+- When app renders, it will run useEffect
+
+Example:
+useEffect(()=> {
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(resp => resp.json())
+.then(users => {setRobots(users)});
+}, [])
+
+- the second argument of useEffect is an empty array, this is the same as using "componentDidMount", it will fetch only once, the first time the app is rendered
+
+# Lesson 32. CWD: React Hooks 8
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883382
+
+- Adding dependency to useEffect as second argument. I create a function in order to add as event to the button "click me!". This will increment the "count" variable and it will fetch every time it changes:
+
+const[count, setCount] = useState(0)
+
+useEffect(()=> {
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(resp => resp.json())
+.then(users => {setRobots(users)});
+console.log(count)
+}, [count])
+
+      const counting = () => {
+      return setCount(count+1)
+    }
+
+<button onClick={counting}>Click me!</button>
+
+# Lesson 33. CWD: React Hooks 9
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/24883377
+
+- Classes components are gonna stay!
+- Hooks only function with Reacts
+- Only call hooks on the top level. Don't call hooks inside loops, condictions or nested functions
+- We can build our own hooks
+
+# Conclusion
+
+- App.js. I filted the array of robots depending of the input of the search field
+- CardList. I loop (map) thru the array of robots so I display the Card element
