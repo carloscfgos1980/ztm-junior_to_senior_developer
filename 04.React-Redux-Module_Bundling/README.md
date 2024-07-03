@@ -328,6 +328,136 @@ https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-devel
 - Only call hooks on the top level. Don't call hooks inside loops, condictions or nested functions
 - We can build our own hooks
 
+# Lesson 34. Introduction To Redux And Webpack
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613164
+
+# Lesson 35. State Management
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613169
+
+# Lesson 36. Why Redux?
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613163
+
+- Good to manage large state
+- Useful to share data between containers
+- Predictable state managment using the 3 principles:
+
+1. Single source of truth
+2. State is read only
+3. Changes using pure functions
+
+- Check <redux> diagram
+- Check <redux-flux_pattern> diagram
+
+# Lesson 37. Installing Redux
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613159
+
+npm install redux
+
+npm onstall react-redux
+
+# Lesson 38. Redux Toolkit
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/25051757
+
+- Redux create a lot of "boiler plate", to solve this issue, it was created "redux toolkit".
+  https://redux-toolkit.js.org
+
+Nevertheless it won't be used in this course so we learn how to use Redux
+
+# Lesson 39. Redux Toolkit Example
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/49009852
+
+We will be visiting Redux over the coming videos, but I wanted to show you what your code would have looked like if you had used Redux Toolkit. As you can see, it's not that much of a difference!
+
+Before:
+
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
+const middleware = [thunk.withExtraArgument(helpers)];
+
+const enhancer = applyMiddleware(...middleware);
+
+const store = createStore(
+combineReducers(reducers),
+normalizedInitialState,
+enhancer
+);
+After:
+
+import { combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+
+const store = configureStore({
+reducer: combineReducers(reducers),
+middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+thunk: {
+extraArgument: helpers,
+},
+}),
+});
+
+# Lesson 40. Redux Actions And Reducers
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613160
+
+# Lesson 41. Redux Store And Provider
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613142
+
+# Lesson 42. Redux connect()
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613149
+
+The lesson is outdated. I ended up doing like I have learned
+
+# Lesson 43. Redux Middleware
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613158
+
+npm intall redux-logger
+
+- This shit does not work, it is a pain in the ass
+
+# Lesson 44. Redux Async Actions
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613143
+
+This shit also didn;t work. I need to consult the offitial page. It is working!
+
+install redux-thunk
+
+Instead I used
+
+# Lesson 45. Redux Project Structures
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613168
+
+# Lesson 46. Popular Tools For React + Redux
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613156
+
+- React Router
+
+Tyling: glamorous
+
+- Next.js
+
+- Material UI
+
+- reselect
+
+Inmutable.js
+
+# Lesson 47. Module Bundlers
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613162
+
 # Conclusion
 
 - App.js. I filted the array of robots depending of the input of the search field
