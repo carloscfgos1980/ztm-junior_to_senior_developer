@@ -406,9 +406,13 @@ extraArgument: helpers,
 
 https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613160
 
+- This lesson is outdated. I need to check the documentation
+
 # Lesson 41. Redux Store And Provider
 
 https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613142
+
+- This lesson is outdated. I need to check the documentation
 
 # Lesson 42. Redux connect()
 
@@ -423,6 +427,7 @@ https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-devel
 npm intall redux-logger
 
 - This shit does not work, it is a pain in the ass
+- I could use instead morgan middleware in the backend!
 
 # Lesson 44. Redux Async Actions
 
@@ -432,7 +437,8 @@ This shit also didn;t work. I need to consult the offitial page. It is working!
 
 install redux-thunk
 
-Instead I used
+Instead I used:
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 # Lesson 45. Redux Project Structures
 
@@ -458,7 +464,56 @@ Inmutable.js
 
 https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613162
 
+- Check <Bundlers> diagram
+
+- <Webpack> is used for big projects. It is set at the beginning for the project lead or a senior developer
+- <Parce>l for a singled person project. very easy to learn
+- <rullop.js> rolling up your own npm packages
+
+* Configuration and configurations files always changes. It is interesting to know how it works but not spent too much time doing a configuration file
+
+# Lesson 48. Introduction To Webpack
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613167
+
+- Check <Webpack> diagram
+
+Webpack is used by React under the hood. It bundle all our files into static asset, things that we can just sent to the browser for us to read our files
+
+# Lesson 49. Update: Babel 7 + ESlint + Webpack 5
+
+Heads up! In the next video we are going to set up our own project using Webpack and other tools that are popular in the industry. However, libraries always change as they get new updates. Since the next video, Babel, Webpack and ESlint have newer versions, so in the video following the next one, I will show you how to update this configuration to work with the latest Babel and Eslint. When you install Webpack you should automatically get the latest version but all the code you will see in the next videos will work!
+
+One piece of advice: Webpack configuration is notoriously complex and confusing. As a matter of fact, Webpack team is constantly updating the library with new ways of doing things. Therefore I don't recommend coding along in the next video with me. Simply watch and understand the core principles I teach you. It is vary rare that you will have to configure Webpack like I will show you in the next video, and it is better to avoid getting too deep into Webpack. I will just show you some principles so that in the future if you ever do need to create an entire webpack setup yourself, you at least know where to start.
+
+# Lesson 50. Webpack
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613146
+
+<Webpack> is pretty complicated, luckly they have a really good documentation online but the principle stays. All we are doing is creating a bundler that takes all our files and put it but the entry that we gave it (index.js), then run thru those modules and test out if any of them ends in js or jxs, we are gonna run them thru babel and we are also gonna <ESlint> them as well and finally we are gonna put that into a distribution (dist) folder and for developer porpuse, we can have a server running to check for errors
+
+- I dont't really need to know this for coding, it is just configuration and React team takes cares of that!
+
+# Lesson 51. Updating Libraries: Babel 7 + ESlint
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613151
+
+# Lesson 52. Parcel
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613144
+
+- Parcel is a new bundler in response to the complication of webpack.
+- Parcel is zero configuration
+
+# Lesson 53. Section Summary
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12613138
+
 # Conclusion
 
-- App.js. I filted the array of robots depending of the input of the search field
-- CardList. I loop (map) thru the array of robots so I display the Card element
+- This is a very large module!
+  Robots friend app evolve thru 3 stages
+- React classes
+- React hooks
+- React-Redux. This Redux was not very useful at the end coz the lesson is outdated, instead I had to go thru other tutorial I have learned and thru the documentation, specially using redux tool kit
+- It ends with the explanation of bundler (webpack and parcel) which I hardly will neeed since React team takes care of that

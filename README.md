@@ -16,3 +16,9 @@
 - Keiko Corp Website. Exercise
 
 # Chapter 04.OPTIONAL: React + Redux + Module Bundling
+
+- Angular vs React vs Vue vs Svelte
+- React classes
+- React hooks
+- React redux
+- bundlers (webpack and parcel)
