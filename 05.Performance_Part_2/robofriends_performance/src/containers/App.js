@@ -23,7 +23,7 @@ function App() {
 
     return loading?
     <div>
-      <h1>loading....</h1>
+      <h1 style={{color: "white"}}>loading....</h1>
     </div>
         
      :

@@ -5,6 +5,8 @@ import { store } from './redux/configureStore';
 import './index.css';
 import App from './containers/App';
 import 'tachyons';
+import * as serviceWorker from './serviceWorker';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,4 +17,4 @@ root.render(
   </React.StrictMode>
 );
 
-
+serviceWorker.register();
