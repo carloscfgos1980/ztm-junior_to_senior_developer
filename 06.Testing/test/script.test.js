@@ -10,7 +10,7 @@ const dbMock = [
 describe('google search', () => {
     test('is searching google', ()=> {
         expect(googleSearch('testtest', dbMock)).toEqual([]);
-            expect(googleSearch('dog', dbMock)).toEqual(['dog.com', 'dogpisctures.com']);
+        expect(googleSearch('dog', dbMock)).toEqual(['dog.com', 'dogpisctures.com']);
     })
     
     test('works with undefined and null inputs', () => {

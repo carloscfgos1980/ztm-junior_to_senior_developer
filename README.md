@@ -30,3 +30,19 @@
 - I learned how to use "lighthouse" chrome extension to improve perfomance
 - how to deploy a static app in github
 - React.Lazy() optimize the app by loading the page asynchronously, so it does not need to have all the elements to upload... still I not very convinced... it add boiler plate
+
+# Chapter 06.Testing
+
+- Types of Tests:
+
+1. Unit Tests
+2. Integration Tests
+3. Automation Testing
+
+- Jest
+- Jest. Unit test: Synchronous Tests
+- Jest. Unit test: Asynchronous Tests
+- Jest. Mock (this is painful to get it right!)
+- Enzyme. It is a library to test React components. I skipped the whole topic
+
+# Chapter 07.TypeScript

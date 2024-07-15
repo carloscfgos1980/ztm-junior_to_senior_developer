@@ -89,3 +89,100 @@ https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-devel
 - test that return to matches website
 - test that an empty array when the arguent ins undefined or null
 - test to check that the length of the output is equal 3
+
+- The example is a bit outdated, they use "it", now is used "test"
+- Also the script the uset it was not working, it is decapricated:
+  test: "jest --watch \*.js"
+
+- Instead I just used:
+  test: "jest"
+
+# Lesson 11. Asynchronous Tests
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606618
+
+**Testing API**:
+http://swapi.py4e.com/api/people/
+http://swapi.py4e.com
+https://swapi.dev
+http://numbersapi.com/#42
+https://api.chucknorris.io
+
+I did not follow the exercise example coz it's a bit outdated, instead I used async await try catch (script2.js)
+
+# Lesson 12. Asynchronous Tests 2
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606613
+
+It took me almost 1 hour to figure this out. When I try to use the asynchronous function, I got undefined... so I google it and this is the best practice
+
+describe('fetching Star War Data', () => {
+test('call swapi to get people', () => {
+return fetchData(STAR_WAR_API).then(data => {
+expect(data.count).toBe(87);
+});
+});
+})
+
+# Lesson 13. Mocks and Spies
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606607
+
+This took me a lot of time to fig it out coz the lesson is outdated and the dos in Jets shows an example where the mocked object is wrapped with [], becasue of that I was getting undefined. It is how is show on the docs... more indo in <script2.js>
+
+- first function: Fetching without axios. Try and Catch
+- second function: Fetching with axios. Try and Catch
+
+# Lesson 14. Introduction To Enzyme
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606614
+
+<Enzyme> is a library to test React components
+
+https://enzymejs.github.io/enzyme/docs/api/
+
+# Lesson 14. Snapshot Testing
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606603
+
+# Lesson 15. Snapshot Testing + Code Coverage
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606606
+
+# Lesson 16. Testing Stateful Components
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606617
+
+# Lesson 17. Testing Connected Components
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606609
+
+# Lesson 18. Testing Connected Components 2
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606616
+
+# Lesson 19. Testing Reducers
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606612
+
+# Lesson 20. Testing Actions
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606604
+
+# Lesson 21. Section Summary
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12606615
+
+# Conclusion
+
+- Types of Tests:
+
+1. Unit Tests
+2. Integration Tests
+3. Automation Testing
+
+- Jest
+- Jest. Unit test: Synchronous Tests
+- Jest. Unit test: Asynchronous Tests
+- Jest. Mock (this is painful to get it right!)
+- Enzyme. It is a library to test React components. I skipped the whole topic!
