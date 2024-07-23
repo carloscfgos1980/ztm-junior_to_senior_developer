@@ -1,4 +1,5 @@
-//Types of variables I
+//Types of variables
+//TypeScript 3. Types of variables I
 //Boolena
 var isCool = true;
 // Number
@@ -13,11 +14,12 @@ var pet2 = ['cat', 'dog', 'bird'];
 var wizard = {
     name: 'John'
 };
+// TypeScript 4. Types of variables II
 // Null and Undefined
 var meh = undefined;
 var nooh = null;
-//Types of variables II
-// Tuple. It is array with different types of variables. It has a specific type and order
+//TypeScript 5. Types of variables III. Any, Void, Never
+//Tuple. It is array with different types of variables. It has a specific type and order
 var basket;
 basket = ['basketball', 5];
 //Enum
@@ -28,8 +30,7 @@ var Size;
     Size[Size["Large"] = 3] = "Large";
 })(Size || (Size = {}));
 var sizeName = Size.Medium;
-// Types of variables III
-// Any... Be careful to use this!
+// Lesson 5. Any... Be careful to use this!
 var whatever = 'oohhhh noooooo';
 whatever = 5;
 whatever = true;
@@ -41,3 +42,33 @@ var sing = function () {
 var fightRobotArmy = function (robots) {
     console.log('Fight!');
 };
+fightRobotArmy({ count: 1, type: 'dragon' }); // I can pass just to arguments coz ther third is write as possible (magic?: )
+var dog = {};
+console.log(dog.count);
+// TypeScript 8. Functions and classes
+var fightRobotArmy2 = function (robots) {
+    console.log('Fight!');
+};
+// Lesson 8. Function. Number because it does return a number
+var fightRobotArmy3 = function (robots) {
+    console.log('Fight!');
+    return 5;
+};
+// Classes
+var Animal = /** @class */ (function () {
+    function Animal(sound) {
+        this.sing = 'lalalalala'; // this property can not longer be accessed coz it is labelled as private
+        this.sing = sound;
+    }
+    Animal.prototype.greet = function () {
+        return "Hello ".concat(this.sing);
+    };
+    return Animal;
+}());
+var lion = new Animal('Raaaahhhh');
+// lion.sing
+// TypeScript 9. Union. This give to the variable more than one "type"
+var confused = 'Hello';
+//TypeScript 10. Infer the type
+// let x = 4;
+// x = 'hello';

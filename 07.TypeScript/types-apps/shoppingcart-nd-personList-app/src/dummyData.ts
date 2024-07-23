@@ -1,4 +1,4 @@
-import { Product } from "./store/features/cartSlice";
+import { Product } from "./redux/features/cartSlice";
 export const products: Product[] = [
   {
     id: 1,

@@ -283,12 +283,19 @@ return total > limit;
 13. src/components/Cart.tsx: Render a text depending if the limit is exceded:
     <span>Is Exceed: </span> <span>{isExceeded ? "Yes" : "No"}</span>
 
-- I believe from topic 9 to 13, it was unnecesary complicated, maybe for teaching reason it is worth it
-
-* This app is 2 years old and it has already important features decapricated.
-
 # Create a local data base(the net ninja tutorial):
 
 https://www.youtube.com/watch?v=eao7ABGFUXs&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d&index=16
 
 npx json-server --watch data/db.json --port 8000
+
+# Conclusion:
+
+- I believe from topic 9 to 13, it was unnecesary complicated, maybe for teaching reason it is worth it
+- This app use "tailwind" for CSS
+- Interface are define in the redux slices and then imported so I don't need to define the variables in multiples place in my app. That is smart!
+- Use of a fake REST API to fetch (POST) and provide info (POST)
+- It does not axios
+- It does not have test
+
+* This app is 2 years old and it has already important features decapricated.

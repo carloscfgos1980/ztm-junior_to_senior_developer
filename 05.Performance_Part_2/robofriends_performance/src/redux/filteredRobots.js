@@ -33,7 +33,6 @@ export const filteredRobotsSlice = createSlice({
     },
     extraReducers: (builder) => {
     builder.addCase(getUsersAsync.fulfilled, (state, action) => {     
-      console.log('loading state', state.loading)
       state.robots = action.payload.users
       state.loading = false
     })

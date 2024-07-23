@@ -46,3 +46,18 @@
 - Enzyme. It is a library to test React components. I skipped the whole topic
 
 # Chapter 07.TypeScript
+
+- Type is a pain in the ass! It should be used in simple apps, neverthless many company use this so it es very handy to master it. I will take a coule typescript tutorial before moving forward
+- Topics:
+- Dynamic vs Static Typing
+- Weakly vs Strongly Typed
+- Static typing in javascript (typescripte)
+- TypeScript. Types of variables
+- TypeScript. Interface, also type but not really in this course
+- TypeScript. Assertion
+- TypeScript. Assertion
+- TypeScript. Functions and classes
+- TypeScript. Union (variable with more than one type)
+- Create React App with TypeScript
+
+* Until it was useful the course, I had to look in the docs in order to make the app work with typescript. It took nearly 10 hours!
