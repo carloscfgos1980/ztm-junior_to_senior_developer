@@ -1,46 +1,109 @@
-# Getting Started with Create React App
+# Robotfriend app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This is singled-page app tutorial that is converted from classes to hook.
+- For CSS is used "tachyons" npm package and for the cool font I used this website:
+  https://freefrontend.com/css-text-effects/#google_vignette
+- App.js. I filtered the array of robots depending of the input of the search field
+- CardList. I loop (map) thru the array of robots so I display the Card element.
+- The images comes from a website, when word is added, it creates a ramdon robot image, so in order to have different robots, the image in Card.js is added the id of the users fetched from "jsonplace holder":
+  <img src={`https://robohash.org/${id}?200x200`} alt="robots"/>
+- Explanation of useEffect and useState
 
-## Available Scripts
+# Testing
 
-In the project directory, you can run:
+I had a bug with "jest" that took me hour to solve. I found the solution here:
+https://stackoverflow.com/questions/58613492/how-to-resolve-cannot-use-import-statement-outside-a-module-from-jest-when-run
 
-### `npm start`
+1. Install jest, ts-jest, babel-jest, and @babel/preset-env:
+   npm i jest ts-jest babel-jest @babel/preset-env
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Add babel.config.js (only used by jest)
+   module.exports = {presets: ['@babel/preset-env']}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+3. In jest.config.js update to:
 
-### `npm test`
+module.exports = {
+preset: 'ts-jest',
+transform: {
+'^.+\\.(ts|tsx)?$': 'ts-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
+}
+};
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. package.json
+   "scripts": {
+   "test": "jest"
+   }
 
-### `npm run build`
+# Axios in a function that is exported in order to be testing in App.test.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+export async function fetchUsers() {
+try {
+const response = await axios.get(URL_USERS);
+console.log(response.data);
+const users = response.data
+return {users}
+} catch (error) {
+console.error(error);
+}
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# passing the two arguments to the asyncThunk function.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export const getUsersAsync = createAsyncThunk(
+'users/getUsersAsync', fetchUsers
+);
 
-### `npm run eject`
+# testing with typescript:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. src/redux/filteredRobots.tsx: Define the function in the slice:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export async function fetchUsers(): Promise</_unresolved_/ any> {
+try {
+const response = await axios.get(URL_USERS);
+console.log(response.data);
+const users = response.data
+return {users}
+} catch (error) {
+console.error(error);
+}
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. App.test.ts Define axios
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-## Learn More
+3. package.json: Add a flag to test script so it won't bother me with the bug of "cannot import modules":
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   "test": "react-scripts test --transformIgnorePatterns",
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- This is a lot simplier that the method I had to use with jest
+
+4. Install this recommended plugin to avoid bugs
+   npm i @babel/plugin-transform-private-property-in-object
+
+**bug**
+When I try to run the test I got an error from watchman related to the version... it turns out that "brew" has to be downdate because the new changes creates this bug... it was fucking difficult to fig this out. I need to review Linux devOps to copy recomended watchman.rb to Formula. I had a problem with thie coz the recomended path was the correct one... now is working I don't need to go thru all the hazzle that I did in "robotsfriends-testing"...
+
+I found the soluction in this site:
+
+https://stackoverflow.com/questions/72451781/cant-use-watchman-operation-not-permitted
+
+1. -- uninstall
+   brew uninstall watchman
+2. -- replace formula
+   curl https://raw.githubusercontent.com/Homebrew/homebrew-core/8651d8e23d308e564414188509f864e40548f514/Formula/watchman.rb > /opt/homebrew/Library/Taps/homebrew/homebrew-core/Formula/watchman.rb
+3. -- install again, using replaced formula
+   brew install watchman
+4. -- pin that version - Don't forget to unpin once this problem is solved...
+   brew pin watchman
+5. -- reset formula to original
+   cd /opt/homebrew/Library/Taps/homebrew/homebrew-core/Formula/
+   git checkout -- watchman.rb
+
+- When I was trying to apply this, I ran into an error... the pat given does not match mine so I need to check where brew folder is:
+  brew --repository
+
+- Then find "Formula" folder and copy the given "watchman.rb"
+
+Now everything works!

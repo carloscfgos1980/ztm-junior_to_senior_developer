@@ -1,5 +1,9 @@
 // import { CHANGE_SEARCHFIELD } from "./constant";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios from 'axios';
+
+const URL_USERS = 'https://jsonplaceholder.typicode.com/users';
+
 
   type robotsData = {
     id:number,
@@ -15,16 +19,19 @@ type RobotState = {
 }
 
 
-export const getUsersAsync = createAsyncThunk(
-    'users/getUsersAsync',
-    async (): Promise</*unresolved*/ any> => {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        if (response.ok) {
-            const users = await response.json();
-            return { users }
-        }
+export async function fetchUsers(): Promise</*unresolved*/ any> {
+    try {
+        const response = await axios.get(URL_USERS);
+        console.log(response.data);
+        const users = response.data
+        return {users}
+    } catch (error) {
+        console.error(error);
     }
-);
+}
+
+
+export const getUsersAsync = createAsyncThunk('users/getUsersAsync', fetchUsers);
 
 
 const initialState: RobotState = {        

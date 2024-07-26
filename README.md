@@ -60,4 +60,9 @@
 - TypeScript. Union (variable with more than one type)
 - Create React App with TypeScript
 
-* Until it was useful the course, I had to look in the docs in order to make the app work with typescript. It took nearly 10 hours!
+* Until here it was useful the course, I had to look in the docs in order to make the app work with typescript. It took nearly 10 hours!
+
+I have created 3 apps so far:
+my-app (just start up redux typescript app)
+shoppingcart-nd-personList-app (tutorial redux typescript)
+robofriends-app (upgrading robotsfriend app from redux to typescript redux including testing)
