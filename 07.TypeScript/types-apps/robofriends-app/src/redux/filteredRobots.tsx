@@ -5,7 +5,7 @@ import axios from 'axios';
 const URL_USERS = 'https://jsonplaceholder.typicode.com/users';
 
 
-  type robotsData = {
+type robotsData = {
     id:number,
     name:string,
     email:string,
