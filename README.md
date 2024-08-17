@@ -63,6 +63,9 @@
 * Until here it was useful the course, I had to look in the docs in order to make the app work with typescript. It took nearly 10 hours!
 
 I have created 3 apps so far:
-my-app (just start up redux typescript app)
-shoppingcart-nd-personList-app (tutorial redux typescript)
-robofriends-app (upgrading robotsfriend app from redux to typescript redux including testing)
+
+- my-app (just start up redux typescript app)
+- shoppingcart-nd-personList-app (tutorial redux typescript)
+- robofriends-app (upgrading robotsfriend app from redux to typescript redux including testing)
+- davy_gray-tutorial: React-hooks app, using form and re usuable components. This is one I didn't follow the tutorial, instead I finished reading the offitial Docs.
+- David-Gray-full_course. This is I have not followed, maybe in the future I will. It is from 2022
