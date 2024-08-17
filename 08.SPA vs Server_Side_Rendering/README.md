@@ -89,37 +89,34 @@ npx create-next-app@latest
 
 - I am not following the tutorial coz is way to outdated, just reading the offitial docs
 
+# Lesson 9. Next.js Pages
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12664282
+
+# Lesson 10. Client Side Routing
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12664273
+
+# Lesson 11. Shared Components
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12664276
+
+# Lesson 12. Dynamic Apps with Next.js
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12664270
+
+# Lesson 13. Deploying Next.js Apps
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12664285
+
+- Check the offitial website in order to learn how to deply an app with next.js
+
+# Lesson 14. Section Summary
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12664277
+
+- Check <Regular JS rendered page> diagram
+- Check <Server Side rendering> diagram
+- Check <Progressing rendering> diagram
+
 # EXTRA. Codevolution tutorial
-
-# Lesson 1. Introduction
-
-https://www.youtube.com/watch?v=ZjAqacIC_3c&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI
-
-What is Nextjs?
-
-React:
-
-- It is not feseable to create a fully-featured application ready for production
-- React is library for building user interfaces
-- You need to make decitions about other features such as routing , data fetching and more
-
-Nextjs:
-
-- It is a React framework, it uses React to build user interfaces
-- Provide additional features that enable you to build production-ready applications
-- These features includes routing, optimized rendering, data fetching, bundling, compiling, and more
-- You don't need to install additional packages as Nextjs provides everything you need
-- Nextjs is a React framework to build production web application
-- It simplifies the process of building a website application for production:
-
-1. Routing
-2. API routes
-3. Rendering
-4. Data fetching
-5. Styling
-6. Optimization
-7. Dev and prod build system
-
-# Lesson 2. Hello World
-
-https://www.youtube.com/watch?v=kVddMV-TrSw&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI&index=2
