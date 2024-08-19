@@ -69,3 +69,26 @@ I have created 3 apps so far:
 - robofriends-app (upgrading robotsfriend app from redux to typescript redux including testing)
 - davy_gray-tutorial: React-hooks app, using form and re usuable components. This is one I didn't follow the tutorial, instead I finished reading the offitial Docs.
 - David-Gray-full_course. This is I have not followed, maybe in the future I will. It is from 2022
+
+# 08.SPA vs Server_Side_Rendering
+
+- CSR vs SSR: Comparison of Client Side Rendering vs Server Side Rendering
+- Server Side Rendering React
+- SSR React Libraries: Gatsby.js and Next.js
+- Next.js apps
+- Deploying Next.js Apps
+- Codevolution tutorial Next.js tutorial (very good)
+
+# 09.Security
+
+- Lesson # 3 provide a diagram with the main issues for security
+- Injections is on of the most dangerous way of hackers attack
+- 3rd Party Libraries: audit the npm packahes
+- Logging: logging middleware like morgans
+- HTTPS Everywhere: host our website in a trusted site
+- XSS + CSRF: Example of hackers attack
+- Secure Headers: helmet middleware
+- Access Control: CORS middleware
+- Authentication
+
+# 10.Code Analysis

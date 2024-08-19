@@ -120,3 +120,12 @@ https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-devel
 - Check <Progressing rendering> diagram
 
 # EXTRA. Codevolution tutorial
+
+**Resumen**
+
+- CSR vs SSR: Comparison of Client Side Rendering vs Server Side Rendering
+- Server Side Rendering React
+- SSR React Libraries: Gatsby.js and Next.js
+- Next.js apps
+- Deploying Next.js Apps
+- Codevolution tutorial Next.js tutorial (very good)
