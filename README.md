@@ -92,3 +92,8 @@ I have created 3 apps so far:
 - Authentication
 
 # 10.Code Analysis
+
+- This is fundamental for a senior developer. Work on an app that has already been built. It ismportant to not act like as a smart-ass and critize everything!
+- full stack app: brain-smart fork from ZTM web develper course
+- Update the app with my data about postgress and carifai API key
+- Update client side in order to transform single face recognition to multi faces recognition
