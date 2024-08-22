@@ -68,3 +68,5 @@ Multifaces recognition instead of just one. Explantion in the README at the root
 In brain-smart repository there are two branches:
 master => single face recognition
 multifaces => multiface recognition
+
+- - I also have a version of smart-brain in Bext.js that someone made

@@ -97,3 +97,4 @@ I have created 3 apps so far:
 - full stack app: brain-smart fork from ZTM web develper course
 - Update the app with my data about postgress and carifai API key
 - Update client side in order to transform single face recognition to multi faces recognition
+- I also have a version of smart-brain in Bext.js that someone made
