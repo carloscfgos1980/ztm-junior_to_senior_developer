@@ -70,7 +70,7 @@ I have created 3 apps so far:
 - davy_gray-tutorial: React-hooks app, using form and re usuable components. This is one I didn't follow the tutorial, instead I finished reading the offitial Docs.
 - David-Gray-full_course. This is I have not followed, maybe in the future I will. It is from 2022
 
-# 08.SPA vs Server_Side_Rendering
+# Chapter 08.SPA vs Server_Side_Rendering
 
 - CSR vs SSR: Comparison of Client Side Rendering vs Server Side Rendering
 - Server Side Rendering React
@@ -79,7 +79,7 @@ I have created 3 apps so far:
 - Deploying Next.js Apps
 - Codevolution tutorial Next.js tutorial (very good)
 
-# 09.Security
+# Chapter 09.Security
 
 - Lesson # 3 provide a diagram with the main issues for security
 - Injections is on of the most dangerous way of hackers attack
@@ -91,10 +91,12 @@ I have created 3 apps so far:
 - Access Control: CORS middleware
 - Authentication
 
-# 10.Code Analysis
+# Chapter 10. Code Analysis
 
 - This is fundamental for a senior developer. Work on an app that has already been built. It ismportant to not act like as a smart-ass and critize everything!
 - full stack app: brain-smart fork from ZTM web develper course
 - Update the app with my data about postgress and carifai API key
 - Update client side in order to transform single face recognition to multi faces recognition
-- I also have a version of smart-brain in Bext.js that someone made
+- I also have a version of smart-brain in Next.js that someone made
+
+# Chapter 11. Docker
