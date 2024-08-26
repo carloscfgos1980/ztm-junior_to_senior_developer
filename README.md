@@ -100,3 +100,22 @@ I have created 3 apps so far:
 - I also have a version of smart-brain in Next.js that someone made
 
 # Chapter 11. Docker
+
+- Docker Containers
+- Installing Docker
+- Docker Commands
+- Docker Compose
+- CMD for docker composer
+- Setting for postgres database in containe
+- Add tables to postgres database
+- Add data to the tables in postgres database
+
+# Chapter 12. Redis
+
+- Database for small data, very popular with sessions
+- Installing Redis
+- Redis Commands
+- Redis Data Types: Strings, hashes, lists, sets
+- Redis Hashes
+- Redis Lists
+  Redis Sets + Sorted Sets
