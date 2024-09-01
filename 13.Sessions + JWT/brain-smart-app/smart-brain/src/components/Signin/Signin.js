@@ -27,8 +27,9 @@ class Signin extends React.Component {
       })
     })
       .then(response => response.json())
-      .then(user => {
-        if (user.id) {
+      .then(data => {
+        console.log("data:", data)
+        if (data.userId) {
           this.props.loadUser(user);
           this.props.toggleModal()
           this.props.onRouteChange('home');

@@ -361,3 +361,88 @@ https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-devel
                 >
                     Save
                 </button>
+
+- Here I had a bug coz the URL was wrong
+
+# Lesson 16. User Authentication. backend
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635731
+
+1. smart-brain-api/controllers/signin.js => Turn handleSignin into a regular function. Before it returned 2 functions:
+   (db, bcrypt) => (req, res) => {...}
+
+2. smart-brain-api/controllers/signin.js => Write the signinAuthentication that will be use in the sigin route
+
+const signinAuthentication = (db, bcrypt) => (req, res) => {
+// const {authorization} = req.headers;
+const authorization = false;
+return authorization ? getAuthorizationToken() :
+handleSignin(db, bcrypt, req, res)
+.then(data => res.json(data))
+.catch(err => res.status(400).json(err))
+}
+
+3. smart-brain-api/controllers/signin.js => Export signinAuthentication
+
+4. smart-brain-api/server.js => Change the name of the function to signinAuthentication
+   app.post('/signin', signin.signinAuthentication(db, bcrypt))
+
+**note**
+One funcking hour to fig this shit out. Problem was that I didn't realize when they change handleSignin into a regular function
+
+# Lesson 17. Sending The JWT Token
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635735
+
+1. smart-brain-api => install JWT:
+   npm i jsonwebtoken
+
+2. smart-brain-api/controllers/signin.js => Require jwt
+   const jwt = require('jsonwebtoken');
+
+3. .env create a variable for the secret
+
+4. Create a function to sign the token:
+
+const singToken = (email) => {
+const jwtPayload = {email};
+const token = jwt.sign(jwtPayload, process.env.SECRET, {expiresIn: '2 days'});
+}
+
+5. Create a function to create sessions:
+
+const createSessions = (user) => {
+const {email, id} = user;
+const token = singToken(email)
+return {succes:'true', userid:id, token}
+}
+
+6. "signinAuthentication" function return createSessions
+   const signinAuthentication = (db, bcrypt) => (req, res) => {
+   // const {authorization} = req.headers;
+   const authorization = false;
+   return authorization ? getAuthorizationToken() :
+   handleSignin(db, bcrypt, req, res)
+   .then(data => {
+   return data.id && data.email ? createSessions(data) : Promise.reject(data)
+   })
+   .then(session => res.json(session))
+   .catch(err => res.status(400).json(err))
+   }
+
+- This will send an object: {succes:'true', userid:id, token} bit the client is expecting the user data so we have to make changes in the client:
+
+- This has me 1 hour looking for a bug. The problem was that I wasn't returning anything in the firts .then
+- I comment the variable with the authorization token coz I have not implemented that yet in the client and I set it to false so it will run "handleSignin" function:
+  // const {authorization} = req.headers;
+  const authorization = false;
+
+7. smart-brain/src/components/Sigin/Signin.js
+
+Before:
+.then(user => {
+if (user.id) {...}...})
+
+After:
+.then(data => {
+if (data.userId) {...}...})
