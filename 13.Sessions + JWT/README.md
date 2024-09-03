@@ -339,7 +339,7 @@ https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-devel
 
 https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635728
 
-1.  src/components/Profile/Profile.js => functo to post data
+1.  src/components/Profile/Profile.js => function to post data
 
     const onProfileUpdate = (data) => {
     fetch(`http://localhost:3000/profile/${user.id}`, {
@@ -446,3 +446,302 @@ if (user.id) {...}...})
 After:
 .then(data => {
 if (data.userId) {...}...})
+
+# Lesson 18. Adding Redis. backend
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635753
+
+1. Install redis
+   npm i redis
+
+2. smart-brain-api/docker-compose.yml => write the script to install redis in the docker image
+
+redis:
+image: redis
+ports:
+
+- "6379:6379"
+
+3. Create a file for redis connection and require it in the server.js
+
+4. redisConnection.js => Code to connect with redis:
+
+const redis = require("redis");
+
+const client = redis.createClient({
+url: process.env.REDIS_URI,
+});
+
+client.on('error', err => console.log('Redis Client Error', err));
+
+const redisConnect = async() => {
+await client.connect();
+}
+
+const redisDisconnect = async () => {
+await client.disconnect();
+}
+
+module.exports = {
+client,
+redisConnect,
+redisDisconnect
+}
+
+- I copied the code from the course, and then I didn't know how to apply so I checked the offitial data myself:
+  https://redis.io/docs/latest/develop/connect/clients/nodejs/
+
+# Lesson 19. Solution: #3 - Adding Redis To Docker Compose
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635745
+
+- To get into our redis database in hte docker image:
+  docker-compose exec redis redis-cli
+
+# Lesson 20. Storing JWT Tokens
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635733
+
+smart-brain-api/controllers/signin.js
+
+1. Require client from the redis connection file(redisConnection.js)
+   const {client} = require('../redisConnection');
+
+2. Create a function to store data in redis. This will return a promise:
+
+const setToken = (key, value) => {
+console.log('key and value', key, value)
+return Promise.resolve(client.set(key, value));
+}
+
+3. After the data is successfully store in redis then return and object to the client with the user id and the token:
+
+const createSessions = (user) => {
+const {email, id} = user;
+const token = singToken(email);
+
+return setToken(token, id)
+.then(() => {
+return {succes:'true', userid:id, token}
+})
+.catch(err => console.log(err))
+}
+
+It is finally working@!
+I can check it out the data in redis likes this:
+docker-compose exec redis redis-cli
+GET [key]
+
+key => is the token that i can copy from the client
+
+# Lesson 21. Retrieving Auth Token. backend
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635729
+
+smart-brain-api/controllers/signin.js
+
+1. Implement "getAuthTokenId" funfion. this check if the token sent by the client, exist in the data base
+
+const getAuthTokenId = () => {
+const {authorization} = req.headers;
+return redisClient.get(authorization, (err, replay) => {
+if(err || !replay){
+return res.status(400).json('Unauthorized')
+}
+return res.json({id:replay})
+})
+}
+
+const signinAuthentication = (db, bcrypt) => (req, res) => {
+...
+return authorization ? getAuthTokenId(req, res) :
+....
+}
+
+# Lesson 22. Client Session Management
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635730
+
+/smart-brain/
+
+1. /src/components/Signin/Sigin.js => Create a function to save the token we get from the server
+   saveAuthTokenInSessions = (token) => {
+   window.sessionStorage.setItem('token', token)
+   }
+
+2. /src/components/Signin/Sigin.js => call the function inside then method:
+
+onSubmitSignIn = () => {
+....
+if (data.userId && data.success === 'true') {
+this.saveAuthTokenInSessions(data.token)
+...
+}
+
+3. /App.js => Use componentDidMount to fetch the signin route once we have log in and we refresh:
+
+componentDidMount(){
+const token = window.sessionStorage.getItem('token');
+if(token){
+fetch('http://localhost:3000/signin', {
+method: 'post',
+headers: {
+'Content-Type': 'application/json',
+'Authorization': token
+}
+})
+.then(response => response.json())  
+ .then(data => {
+if (data && data.id) {
+console.log('success, we need to get user profile')
+}
+})
+.catch(err => console.log(err))
+}
+}
+
+# Lesson 23. Session Sign In
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635749
+
+/smart-brain/
+
+1.  App.js => fetch the profile after checking the token:
+
+    .then(data => {
+    if (data && data.id) {
+    fetch(`http://localhost:3000/profile/${data.id}`, {
+    method: 'post',
+    headers: {
+    'Content-Type': 'application/json',
+    'Authorization': token
+    }
+    })
+    .then(response => response.json())
+    .then(user => {
+    if(user && user.email){
+    this.loadUser(user);
+    this.onRouteChange('home');
+    }
+    })
+    .catch(err => console.log(err))
+    }
+    })
+
+2.  /src/components/Signin/Sigin.js => fetch the profile after checking the token:
+
+        if (data.userId && data.success === 'true') {
+            this.saveAuthTokenInSessions(data.token)
+            fetch(`http://localhost:3000/profile/${data.userId}`, {
+                method: 'get',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': data.token
+                  }
+              })
+              .then(response => response.json())
+              .then(user => {
+                  if (user && user.email){
+                    this.props.loadUser(this.props.user);
+                    this.props.toggleModal()
+                    this.props.onRouteChange('home');
+                  }
+              })
+        }
+
+- This is a bit repetitive so I could use just one function since it is the same logic
+
+# Lesson 24. Authorization Middleware. server
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635740
+
+1. Create a folder and file for middleware: middleware/authorization.js:
+   const {redisClient }= require('../redisConnection');
+
+const requireAuth = (req, res, next) => {
+const {authorization} = req.headers;
+console.log('middleware headers', authorization)
+
+    if(!authorization){
+        return res.status(401).json('unauthorized')
+    }
+
+    if(authorization){
+        redisClient.get(authorization, (err, replay) =>{
+            if(err || !replay){
+                return res.status(401).json('unauthorized')
+            }
+            console.log('you shall pass');
+        })
+    }
+    next();
+
+}
+
+module.exports = {
+requireAuth,
+}
+
+- The app wasn't working coz a bug in the middleare. In the tutorial "next" is called inside the checking and it wasn't triggering, it must be at the very end of the function
+
+2. server.js => Protect the routes with middleware:
+
+const { requireAuth } = require('./middleware/authorization');
+
+app.get('/profile/:id', requireAuth, (req, res) => { profile.handleProfileGet(req, res, db)})
+app.post('/profile/:id', requireAuth,(req, res) => { profile.handleProfileUpdate(req, res, db)})
+app.put('/image', requireAuth, (req, res) => { image.handleImage(req, res, db)})
+app.post('/imageurl', requireAuth, (req, res) => { image.handleApiCall(req, res)})
+
+# Lesson 25. Fixing A Bug
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635737
+
+1. Client: Profile.js => Update the headrs for profile post request
+
+   const onProfileUpdate = (data) => {
+
+....
+'Authorization': window.sessionStorage.getItem('token')
+...
+}
+
+2.  Client: Profile.js => Apply "then" method and check if the response is ok, then update state and call toggleModal function to close the Modal
+
+        const onProfileUpdate = (data) => {
+
+    ....
+    }). then(resp => {
+    if(resp.status === 200 || resp.status === 304){
+    toggleModal();
+    loadUser(...user, ...data)
+    }
+    .....
+    })}
+
+# Lesson 26. Reviewing Our Code
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635744
+
+# Lesson 27. Updating Our App
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/13138712
+
+- Update bcrypt npm package
+- Update Node version in Dockerfile (if need it)
+- Update Docker-compose version (if need it)
+
+**TIPS**
+
+- It is our job as developer to keep the library updated, check the documentation, some times the update breaks the functionality of the app
+- Minimize the amount of library (npm packages) that we use coz it is more stuff to keep in mind to update
+
+# Lesson 28. Section Summary
+
+https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12635752
+
+- Codebase that we can use to extend in our projects
+- How to use sessions and JWT to have full access and control over the users
+- We use postgres to storage tue user data
+- We use redis to store User Id and the token created for the session
+- This code is very messy. The app is not complete but I won't do it. Just Update the tables in postgress for the "pet" and "age" state

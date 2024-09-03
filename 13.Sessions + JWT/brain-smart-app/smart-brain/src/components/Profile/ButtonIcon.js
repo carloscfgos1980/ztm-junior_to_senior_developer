@@ -10,7 +10,7 @@ import ProfileIcon from './ProfileIcon';
 
 
 
-const ButtonIcon = ({ onRouteChange, direction, ...args }) => {
+const ButtonIcon = ({ toggleModal, onRouteChange, direction, ...args }) => {
       const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
@@ -25,8 +25,13 @@ const ButtonIcon = ({ onRouteChange, direction, ...args }) => {
         <DropdownMenu {...args} 
         className='b--transparent shadow-5' 
         style={{marginTop: '20px', backgroundColor: 'rgba(255, 255,255,0.5'}}>
-          <DropdownItem>View Profile</DropdownItem>
-            <DropdownItem onClick={() => onRouteChange('signout')}>
+          <DropdownItem
+            onClick={toggleModal}
+          >
+              View Profile
+          </DropdownItem>
+            <DropdownItem 
+              onClick={() => onRouteChange('signout')}>
                 Sign Out
             </DropdownItem>
         </DropdownMenu>

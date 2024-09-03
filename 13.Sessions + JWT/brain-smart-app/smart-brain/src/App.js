@@ -36,6 +36,40 @@ class App extends Component {
     this.state = initialState;
   }
 
+componentDidMount(){
+  const token = window.sessionStorage.getItem('token');
+  if(token){
+      fetch('http://localhost:3000/signin', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      }
+    })
+      .then(response => response.json())    
+      .then(data => {
+        if (data && data.id) {
+          fetch(`http://localhost:3000/profile/${data.id}`, {
+            method: 'get',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': token
+              }
+          })
+          .then(response => response.json())
+          .then(user => {
+            if(user && user.email){
+              this.loadUser(user);
+              this.onRouteChange('home');
+            }
+          })
+          .catch(err => console.log(err))
+        }
+      })
+      .catch(err => console.log(err))
+  }
+}
+
   loadUser = (data) => {
     this.setState({user: {
       id: data.id,
@@ -71,10 +105,14 @@ class App extends Component {
   }
 
   onButtonSubmit = () => {
+    const token = window.sessionStorage.getItem('token')
     this.setState({imageUrl: this.state.input});
       fetch('http://localhost:3000/imageurl', {
         method: 'post',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        },
         body: JSON.stringify({
           input: this.state.input
         })
@@ -84,7 +122,10 @@ class App extends Component {
         if (response) {
           fetch('http://localhost:3000/image', {
             method: 'put',
-            headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        },
             body: JSON.stringify({
               id: this.state.user.id
             })
@@ -121,7 +162,11 @@ class App extends Component {
     return (
       <div className="App">
         <ParticlesBg type="circle" bg={true} />
-        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+        <Navigation 
+        isSignedIn={isSignedIn} 
+        onRouteChange={this.onRouteChange}
+        toggleModal={this.toggleModal}
+         />
         {isProfileOpen && 
         <ModalForm 
         toggleModal={this.toggleModal} 
@@ -149,6 +194,7 @@ class App extends Component {
              loadUser={this.loadUser} 
              onRouteChange={this.onRouteChange}
              toggleModal={this.toggleModal}
+             user={this.state.user}
              />
              : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
             )

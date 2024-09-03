@@ -119,3 +119,23 @@ I have created 3 apps so far:
 - Redis Hashes
 - Redis Lists
   Redis Sets + Sorted Sets
+
+# Chapter 13.Sessions + JWT
+
+- Cookies vs Tokens
+- JWT
+- Profile Icon (avatar img)
+- Profile Dropdown (reactstrap component)
+- Profile Modal (reactstrap component)
+- Updating Profile. backend (update postgres)
+- Updating Profile. frontend (function using "swithc" for the form)
+- User Authentication. backend
+- Sending The JWT Token
+- Adding Redis. backend
+- Adding Redis To Docker Compose
+- Storing JWT Tokens
+- Retrieving Auth Token. backend
+- Client Session Management(window.sessionStorage)
+- Session Sign In
+- Authorization Middleware. server
+- MAIN COMPONENTS: docker, postgres, redis, JWT, middleare, modal

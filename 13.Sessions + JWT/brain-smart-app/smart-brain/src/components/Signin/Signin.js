@@ -17,10 +17,17 @@ class Signin extends React.Component {
     this.setState({signInPassword: event.target.value})
   }
 
+  saveAuthTokenInSessions = (token) => {
+    return sessionStorage.setItem('token', token)
+  }
+
   onSubmitSignIn = () => {
     fetch('http://localhost:3000/signin', {
       method: 'post',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Authorization': false
+      },
       body: JSON.stringify({
         email: this.state.signInEmail,
         password: this.state.signInPassword
@@ -29,10 +36,27 @@ class Signin extends React.Component {
       .then(response => response.json())
       .then(data => {
         console.log("data:", data)
-        if (data.userId) {
-          this.props.loadUser(user);
-          this.props.toggleModal()
-          this.props.onRouteChange('home');
+        this.saveAuthTokenInSessions(data.token);
+        let token = sessionStorage.getItem("token");
+        console.log('data-token', token)
+        if(data.userId && data.success === 'true') {
+          console.log('userId', data.userId)
+            fetch(`http://localhost:3000/profile/${data.userId}`, {
+                method: 'get',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': token
+                  }
+              })
+              .then(resp => resp.json())
+              .then(user => {
+                console.log('user', user)
+                  if (user && user.email){
+                      this.props.loadUser(user);
+                      this.props.toggleModal()
+                      this.props.onRouteChange('home');
+                  }
+              })
         }
       })
   }
