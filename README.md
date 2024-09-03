@@ -139,3 +139,13 @@ I have created 3 apps so far:
 - Session Sign In
 - Authorization Middleware. server
 - MAIN COMPONENTS: docker, postgres, redis, JWT, middleare, modal
+
+# Chapter 14.AWS
+
+- Amazon Web Services
+- Monolithic vs Micro Services
+- Amazon Lambda
+- Amazon Lambda Dashboard
+- Serverless: npm package to deploy from CLI
+- IAM
+- This whole section was to implement a feature from AWS in the smart-brain app. I still don't see how useful that it, probably easier than code neverhtless, it can be done with AWS
