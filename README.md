@@ -149,3 +149,16 @@ I have created 3 apps so far:
 - Serverless: npm package to deploy from CLI
 - IAM
 - This whole section was to implement a feature from AWS in the smart-brain app. I still don't see how useful that it, probably easier than code neverhtless, it can be done with AWS
+
+# Chapter 15. Performance Part 3
+
+- CDNs
+- GZIP
+- Database Scaling
+- Caching
+- Load Balancing
+- Nginx 1. load-balancer-exercise-master
+
+* These features are ONLY needed if you app is used by a lot of users, otherwise is just add unncessary complexity to out code nd theare are Host like "cloudfire" or "AWS" that provide this service withojt add any single line of code
+
+# Chapter 16. CI/CD
