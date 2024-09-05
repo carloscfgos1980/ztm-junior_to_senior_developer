@@ -71,14 +71,14 @@ build-test-and-lint:
 jobs: - build - hithere - test:
 requires: - hithere
 
-# Lesson 8. Continuous Integration 2
+# Lesson 8. Continuous Integration 2. Prittier
 
 https://academy.zerotomastery.io/courses/the-complete-junior-to-senior-web-developer-roadmap-2020/lectures/12681510
 
 Prettier organize our code and make it more readable
 https://prettier.io
 
-- Always cehck the offitial docs
+- Always check the offitial docs
 
 Steps:
 

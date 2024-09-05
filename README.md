@@ -162,3 +162,16 @@ I have created 3 apps so far:
 * These features are ONLY needed if you app is used by a lot of users, otherwise is just add unncessary complexity to out code nd theare are Host like "cloudfire" or "AWS" that provide this service withojt add any single line of code
 
 # Chapter 16. CI/CD
+
+- Continuous Integration
+- ContinuousDelivery
+- Continuous Deployment
+- CI Tools (circleCi, TravisCI)
+- CircleCI
+- Continuous Integration 2. Prittier
+
+* Using this method is very useful to work in a team since reduce the cances for bugs and breaing the app in production
+
+# Chapter 17. Extra Bits
+
+-
